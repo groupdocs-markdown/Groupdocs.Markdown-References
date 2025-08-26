@@ -1,6 +1,6 @@
-# GroupDocs.Markdown API Reference
+# GroupDocs.Markdown - API Reference Source Files
 
-This repository contains the source files required to generate the **API Reference documentation** for [GroupDocs.Markdown](https://products.groupdocs.com/markdown/).
+This repository contains Markdown files that are used to generate GroupDocs.Markdown static API references that can be found at <https://reference.groupdocs.com/markdown/>.
 
 ## About GroupDocs.Markdown
 
