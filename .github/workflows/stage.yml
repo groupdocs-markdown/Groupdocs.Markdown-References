@@ -22,18 +22,37 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Copycat
-      uses: andstor/copycat-action@v3
+    - name: Checkout source repository
+      uses: actions/checkout@v4
       with:
-        personal_token: ${{ secrets.REPO_TOKEN }}
-        src_path: /.
-        dst_path: /content/sites/groupdocs/markdown/
-        dst_owner: groupdocs
-        dst_repo_name: reference.groupdocs.com
-        dst_branch: main
-        src_branch: main
-        clean: true
-        exclude: |
-            README.md
-            LICENSE
-            .github/**
+        fetch-depth: 1
+
+    - name: Checkout destination repository
+      uses: actions/checkout@v4
+      with:
+        repository: groupdocs/reference.groupdocs.com
+        path: dest
+        ref: main
+        token: ${{ secrets.REPO_TOKEN }}
+        fetch-depth: 1
+
+    - name: Sync files to destination (exclude LICENSE, README.md, .github)
+      run: |
+        rsync -a --delete \
+          --exclude 'LICENSE' \
+          --exclude 'README.md' \
+          --exclude '.github/' \
+          ./ dest/content/sites/groupdocs/markdown/
+
+    - name: Commit and push changes
+      working-directory: dest
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -A
+        if git diff --cached --quiet; then
+          echo "No changes to commit."
+          exit 0
+        fi
+        git commit -m "chore: sync markdown files from source repo"
+        git push origin main
