@@ -37,12 +37,13 @@ jobs:
         token: ${{ secrets.REPO_TOKEN }}
         fetch-depth: 1
 
-    - name: Sync files to destination (exclude LICENSE, README.md, .github)
+    - name: Sync files to destination (exclude LICENSE, README.md, .github, .git)
       run: |
-        rsync -a --delete \
+        rsync -av --delete \
           --exclude 'LICENSE' \
           --exclude 'README.md' \
           --exclude '.github/' \
+          --exclude '.git/' \
           ./src/ ./dest/content/sites/groupdocs/markdown/
 
     - name: Commit and push changes
