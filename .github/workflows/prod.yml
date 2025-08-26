@@ -57,4 +57,4 @@ jobs:
           exit 0
         fi
         git commit -m "chore: sync markdown files from source repo"
-        git push origin main
+        git push origin production
