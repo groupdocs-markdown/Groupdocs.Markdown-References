@@ -33,3 +33,7 @@ jobs:
         dst_branch: production
         src_branch: production
         clean: true
+        exclude: |
+            README.md
+            LICENSE
+            .github/**
