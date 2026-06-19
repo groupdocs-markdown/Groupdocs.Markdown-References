@@ -12,11 +12,14 @@ lead: "Export PDF, Word, Excel, and other formats to clean Markdown."
 
 platforms:
   - name: ".NET"
+    version: "26.3.0"
+    versionUrl: "https://www.nuget.org/packages/groupdocs.markdown/26.3.0"
     key: net
     ref: "/net/"
     install: "dotnet add package GroupDocs.Markdown"
   - name: "Python via .NET"
     version: "26.3.0"
+    versionUrl: "https://pypi.org/project/groupdocs-markdown-net/26.3.0/"
     key: python
     ref: "/python-net/"
     install: "pip install groupdocs-markdown-net"
