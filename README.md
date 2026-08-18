@@ -10,6 +10,7 @@ processing: export PDF, Word, Excel, and other formats to clean Markdown. It is 
 API reference:
 
 - **.NET** — <https://reference.groupdocs.com/markdown/net/>
+- **Java** — <https://reference.groupdocs.com/markdown/java/>
 - **Python via .NET** — <https://reference.groupdocs.com/markdown/python-net/>
 
 ## Repository purpose
